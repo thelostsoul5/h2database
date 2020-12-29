@@ -870,9 +870,10 @@ public class ParserUtil {
             }
             return IDENTIFIER;
         case 'V':
-            if (eq("VALUE", s, ignoreCase, start, length)) {
+            /*if (eq("VALUE", s, ignoreCase, start, length)) {
                 return VALUE;
-            } else if (eq("VALUES", s, ignoreCase, start, length)) {
+            } else */
+            if (eq("VALUES", s, ignoreCase, start, length)) {
                 return VALUES;
             }
             return IDENTIFIER;
