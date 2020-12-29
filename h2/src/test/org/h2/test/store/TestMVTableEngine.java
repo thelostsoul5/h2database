@@ -1283,7 +1283,7 @@ public class TestMVTableEngine extends TestDb {
         Statement stat = conn.createStatement();
         stat.execute("create table test(id int primary key, name varchar)");
         stat.execute("insert into test values(1, 'Hello'), (2, 'World')");
-        ResultSet rs = stat.executeQuery("select *, _rowid_ from test");
+        ResultSet rs = stat.executeQuery("select *, ROWID from test");
         assertTrue(rs.next());
         assertEquals(1, rs.getInt(1));
         assertEquals("Hello", rs.getString(2));

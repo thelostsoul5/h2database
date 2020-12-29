@@ -60,7 +60,7 @@ public final class MergeUsing extends DataChangeStatement {
     private ArrayList<When> when = Utils.newSmallArrayList();
 
     /**
-     * Contains _ROWID_ of processed rows. Row
+     * Contains ROWID of processed rows. Row
      * identities are remembered to prevent duplicate updates of the same row.
      */
     private final HashSet<Long> targetRowidsRemembered = new HashSet<>();
@@ -127,7 +127,7 @@ public final class MergeUsing extends DataChangeStatement {
                     if (!targetRowidsRemembered.add(targetRowId)) {
                         throw DbException.get(ErrorCode.DUPLICATE_KEY_1,
                                 "Merge using ON column expression, " +
-                                "duplicate _ROWID_ target record already processed:_ROWID_="
+                                "duplicate ROWID target record already processed:ROWID="
                                         + targetRowId + ":in:"
                                         + targetTableFilter.getTable());
                     }

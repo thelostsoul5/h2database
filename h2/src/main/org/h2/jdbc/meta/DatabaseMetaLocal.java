@@ -148,7 +148,7 @@ public final class DatabaseMetaLocal extends DatabaseMetaLocalBase {
                 + "QUALIFY," //
                 + "REGEXP,ROWNUM," //
                 + "TOP,"//
-                + "_ROWID_";
+                + "ROWID";
     }
 
     @Override

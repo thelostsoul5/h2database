@@ -61,8 +61,8 @@ DROP TABLE TEST;
 CREATE TABLE TEST(ID INT) AS VALUES 100;
 > ok
 
--- _ROWID_ modifications are not allowed
-UPDATE TEST SET _ROWID_ = 2 WHERE ID = 100;
+-- ROWID modifications are not allowed
+UPDATE TEST SET ROWID = 2 WHERE ID = 100;
 > exception SYNTAX_ERROR_2
 
 DROP TABLE TEST;

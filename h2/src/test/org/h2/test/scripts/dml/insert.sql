@@ -32,12 +32,12 @@ DROP TABLE TEST;
 CREATE TABLE TEST(ID INT);
 > ok
 
--- TODO Do we need _ROWID_ support here?
-INSERT INTO TEST(_ROWID_, ID) VALUES (2, 3);
+-- TODO Do we need ROWID support here?
+INSERT INTO TEST(ROWID, ID) VALUES (2, 3);
 > update count: 1
 
-SELECT _ROWID_, ID FROM TEST;
-> _ROWID_ ID
+SELECT ROWID, ID FROM TEST;
+> ROWID ID
 > ------- --
 > 2       3
 > rows: 1

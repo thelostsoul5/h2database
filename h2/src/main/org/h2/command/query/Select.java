@@ -658,7 +658,7 @@ public class Select extends Query {
             }
         }
         if (sortCols.length == 1 && sortCols[0].getColumnId() == -1) {
-            // special case: order by _ROWID_
+            // special case: order by ROWID
             Index index = topTableFilter.getTable().getScanIndex(session);
             if (index.isRowIdIndex()) {
                 return index;

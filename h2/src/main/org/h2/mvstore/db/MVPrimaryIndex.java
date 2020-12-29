@@ -126,7 +126,7 @@ public class MVPrimaryIndex extends MVIndex<Long, SearchRow> {
         } catch (MVStoreException e) {
             throw mvTable.convertException(e);
         }
-        // because it's possible to directly update the key using the _rowid_
+        // because it's possible to directly update the key using the ROWID
         // syntax
         long last;
         while (rowKey > (last = lastKey.get())) {
@@ -198,7 +198,7 @@ public class MVPrimaryIndex extends MVIndex<Long, SearchRow> {
         }
 
 
-        // because it's possible to directly update the key using the _rowid_
+        // because it's possible to directly update the key using the ROWID
         // syntax
         if (newRow.getKey() > lastKey.get()) {
             lastKey.set(newRow.getKey());

@@ -222,7 +222,7 @@ public abstract class Table extends SchemaObject {
      *
      * @param session the session
      * @param oldRow the row to update
-     * @param newRow the row with updated values (_rowid_ suppose to be the same)
+     * @param newRow the row with updated values (ROWID suppose to be the same)
      * @throws DbException if a constraint was violated
      */
     public void updateRow(SessionLocal session, Row oldRow, Row newRow) {

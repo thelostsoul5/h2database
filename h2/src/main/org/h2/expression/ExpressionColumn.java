@@ -111,7 +111,7 @@ public final class ExpressionColumn extends Expression {
     }
 
     /**
-     * Creates a new instance of column reference for {@code _ROWID_} column as
+     * Creates a new instance of column reference for {@code ROWID} column as
      * normal expression.
      *
      * @param database

@@ -730,20 +730,20 @@ The rows of a table are stored with the row id as the key.
 The row id is a number of type long.
 If a table has a single column primary key of type <code>INT</code> or <code>BIGINT</code>,
 then the value of this column is the row id, otherwise the database generates the row id automatically.
-There is a (non-standard) way to access the row id: using the <code>_ROWID_</code> pseudo-column:
+There is a (non-standard) way to access the row id: using the <code>ROWID</code> pseudo-column:
 </p>
 <pre>
 CREATE TABLE ADDRESS(FIRST_NAME VARCHAR,
     NAME VARCHAR, CITY VARCHAR, PHONE VARCHAR);
 INSERT INTO ADDRESS VALUES('John', 'Miller', 'Berne', '123 456 789');
 INSERT INTO ADDRESS VALUES('Philip', 'Jones', 'Berne', '123 012 345');
-SELECT _ROWID_, * FROM ADDRESS;
+SELECT ROWID, * FROM ADDRESS;
 </pre>
 <p>
 The data is stored in the database as follows:
 </p>
 <table>
-<tr><th>_ROWID_</th><th>FIRST_NAME</th><th>NAME</th><th>CITY</th><th>PHONE</th></tr>
+<tr><th>ROWID</th><th>FIRST_NAME</th><th>NAME</th><th>CITY</th><th>PHONE</th></tr>
 <tr><td>1</td><td>John</td><td>Miller</td><td>Berne</td><td>123 456 789</td></tr>
 <tr><td>2</td><td>Philip</td><td>Jones</td><td>Berne</td><td>123 012 345</td></tr>
 </table>
@@ -778,7 +778,7 @@ In the index, the data is sorted by the indexed columns.
 So this index contains the following data:
 </p>
 <table>
-<tr><th>CITY</th><th>NAME</th><th>FIRST_NAME</th><th>_ROWID_</th></tr>
+<tr><th>CITY</th><th>NAME</th><th>FIRST_NAME</th><th>ROWID</th></tr>
 <tr><td>Berne</td><td>Jones</td><td>Philip</td><td>2</td></tr>
 <tr><td>Berne</td><td>Miller</td><td>John</td><td>1</td></tr>
 </table>
@@ -841,7 +841,7 @@ CREATE INDEX IDX_PHONE ON ADDRESS(PHONE);
 This index contains the phone number, and the row id:
 </p>
 <table>
-<tr><th>PHONE</th><th>_ROWID_</th></tr>
+<tr><th>PHONE</th><th>ROWID</th></tr>
 <tr><td>123 012 345</td><td>2</td></tr>
 <tr><td>123 456 789</td><td>1</td></tr>
 </table>

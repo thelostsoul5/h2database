@@ -64,7 +64,7 @@ public final class DatabaseMetaLegacy extends DatabaseMetaLocalBase {
                 + "REGEXP,ROWNUM," //
                 + "SYSDATE,SYSTIME,SYSTIMESTAMP," //
                 + "TODAY,TOP,"//
-                + "_ROWID_";
+                + "ROWID";
     }
 
     @Override

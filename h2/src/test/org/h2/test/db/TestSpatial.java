@@ -865,9 +865,9 @@ public class TestSpatial extends TestDb {
             stat.execute("create table test(id serial primary key, " +
                     "v double, the_geom geometry)");
             stat.execute("create spatial index spatial on test(the_geom)");
-            ResultSet rs = stat.executeQuery("explain select * from test where _ROWID_ = 5");
+            ResultSet rs = stat.executeQuery("explain select * from test where ROWID = 5");
             assertTrue(rs.next());
-            assertFalse(rs.getString(1).contains("/* PUBLIC.SPATIAL: _ROWID_ = " +
+            assertFalse(rs.getString(1).contains("/* PUBLIC.SPATIAL: ROWID = " +
                     "5 */"));
         }
         deleteDb("spatial");

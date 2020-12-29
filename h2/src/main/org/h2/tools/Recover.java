@@ -971,7 +971,7 @@ public class Recover extends Tool implements DataHandler {
                         String tableName = tableMap.get(storageId);
                         if (tableName != null) {
                             String sql = "DELETE FROM " + tableName +
-                                    " WHERE _ROWID_ = " + key + ";";
+                                    " WHERE ROWID = " + key + ";";
                             writer.println(sql);
                         }
                     }

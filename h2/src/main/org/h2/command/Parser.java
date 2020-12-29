@@ -99,7 +99,7 @@ import static org.h2.util.ParserUtil.WHERE;
 import static org.h2.util.ParserUtil.WINDOW;
 import static org.h2.util.ParserUtil.WITH;
 import static org.h2.util.ParserUtil.YEAR;
-import static org.h2.util.ParserUtil._ROWID_;
+import static org.h2.util.ParserUtil.ROWID;
 
 import java.io.ByteArrayOutputStream;
 import java.math.BigDecimal;
@@ -746,8 +746,8 @@ public class Parser {
             "WITH",
             // YEAR
             "YEAR",
-            // _ROWID_
-            "_ROWID_",
+            // ROWID
+            "ROWID",
             // PARAMETER
             "?",
             // END
@@ -1621,7 +1621,7 @@ public class Parser {
     }
 
     private Column parseColumn(Table table) {
-        if (currentTokenType == _ROWID_) {
+        if (currentTokenType == ROWID) {
             read();
             return table.getRowIdColumn();
         }
@@ -5070,7 +5070,7 @@ public class Parser {
         if (readIf(ASTERISK)) {
             return parseWildcard(schema, objectName);
         }
-        if (readIf(_ROWID_)) {
+        if (readIf(ROWID)) {
             return new ExpressionColumn(database, schema, objectName);
         }
         if (database.getMode().nextvalAndCurrvalPseudoColumns) {
@@ -5351,7 +5351,7 @@ public class Parser {
             read();
             r = ValueExpression.NULL;
             break;
-        case _ROWID_:
+        case ROWID:
             read();
             r = new ExpressionColumn(database, null, null);
             break;

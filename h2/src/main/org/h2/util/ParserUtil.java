@@ -465,9 +465,9 @@ public class ParserUtil {
     public static final int YEAR = WITH + 1;
 
     /**
-     * The token "_ROWID_".
+     * The token "ROWID".
      */
-    public static final int _ROWID_ = YEAR + 1;
+    public static final int ROWID = YEAR + 1;
 
     // Constants above must be sorted
 
@@ -479,7 +479,7 @@ public class ParserUtil {
     /**
      * The ordinal number of the last keyword.
      */
-    public static final int LAST_KEYWORD = _ROWID_;
+    public static final int LAST_KEYWORD = ROWID;
 
     private ParserUtil() {
         // utility class
@@ -815,6 +815,8 @@ public class ParserUtil {
                 return ROW;
             } else if (eq("ROWNUM", s, ignoreCase, start, length)) {
                 return ROWNUM;
+            } else if (eq("ROWID", s, ignoreCase, start, length)) {
+                return ROWID;
             }
             if (additionalKeywords) {
                 if (eq("RANGE", s, ignoreCase, start, length) || eq("REGEXP", s, ignoreCase, start, length)
@@ -890,12 +892,6 @@ public class ParserUtil {
                 return YEAR;
             }
             return IDENTIFIER;
-        case '_':
-            // Cannot use eq() because 0x7f can be converted to '_' (0x5f)
-            if (length == 7 && "_ROWID_".regionMatches(ignoreCase, 0, s, start, 7)) {
-                return _ROWID_;
-            }
-            //$FALL-THROUGH$
         default:
             return IDENTIFIER;
         }

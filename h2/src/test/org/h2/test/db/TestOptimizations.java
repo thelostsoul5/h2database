@@ -106,7 +106,7 @@ public class TestOptimizations extends TestDb {
         stat.executeUpdate("create table many(id int) " +
                 "as select x from system_range(1, 10000)");
         ResultSet rs = stat.executeQuery("explain analyze select * from many " +
-                "where _rowid_ = 400");
+                "where ROWID = 400");
         rs.next();
         assertContains(rs.getString(1), "/* scanCount: 2 */");
         conn.close();
@@ -282,15 +282,15 @@ public class TestOptimizations extends TestDb {
         ResultSet rs;
 
         stat.execute("create table test(data varchar)");
-        stat.execute("select min(_rowid_ + 1) from test");
-        stat.execute("insert into test(_rowid_, data) values(10, 'Hello')");
+        stat.execute("select min(ROWID + 1) from test");
+        stat.execute("insert into test(ROWID, data) values(10, 'Hello')");
         stat.execute("insert into test(data) values('World')");
-        stat.execute("insert into test(_rowid_, data) values(20, 'Hello')");
+        stat.execute("insert into test(ROWID, data) values(20, 'Hello')");
         stat.execute(
-                "merge into test using (values(20, 'Hallo')) s(id, data) on test._rowid_ = s.id"
+                "merge into test using (values(20, 'Hallo')) s(id, data) on test.ROWID = s.id"
                 + " when matched then update set data = s.data");
         rs = stat.executeQuery(
-                "select _rowid_, data from test order by _rowid_");
+                "select ROWID, data from test order by ROWID");
         rs.next();
         assertEquals(10, rs.getInt(1));
         assertEquals("Hello", rs.getString(2));
@@ -308,18 +308,18 @@ public class TestOptimizations extends TestDb {
         stat.execute("insert into test values(3, 'Hello')");
         stat.execute("insert into test values(2, 'Hello')");
 
-        rs = stat.executeQuery("explain select * from test where _rowid_ = 2");
+        rs = stat.executeQuery("explain select * from test where ROWID = 2");
         rs.next();
-        assertContains(rs.getString(1), ".tableScan: _ROWID_ =");
+        assertContains(rs.getString(1), ".tableScan: ROWID =");
 
-        rs = stat.executeQuery("explain select * from test where _rowid_ > 2");
+        rs = stat.executeQuery("explain select * from test where ROWID > 2");
         rs.next();
-        assertContains(rs.getString(1), ".tableScan: _ROWID_ >");
+        assertContains(rs.getString(1), ".tableScan: ROWID >");
 
-        rs = stat.executeQuery("explain select * from test order by _rowid_");
+        rs = stat.executeQuery("explain select * from test order by ROWID");
         rs.next();
         assertContains(rs.getString(1), "/* index sorted */");
-        rs = stat.executeQuery("select _rowid_, * from test order by _rowid_");
+        rs = stat.executeQuery("select ROWID, * from test order by ROWID");
         rs.next();
         assertEquals(0, rs.getInt(1));
         assertEquals(0, rs.getInt(2));

@@ -731,7 +731,7 @@ public class TestCompatibility extends TestDb {
     }
 
     private void testIdentifiers(Statement stat, String table, String column, boolean ok) throws SQLException {
-        String query = "SELECT _ROWID_, " + column + " FROM " + table;
+        String query = "SELECT ROWID, " + column + " FROM " + table;
         if (ok) {
             try (ResultSet rs = stat.executeQuery(query)) {
                 assertTrue(rs.next());

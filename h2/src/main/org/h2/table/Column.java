@@ -39,7 +39,7 @@ public final class Column implements HasSQL, Typed, ColumnTemplate {
     /**
      * The name of the rowid pseudo column.
      */
-    public static final String ROWID = "_ROWID_";
+    public static final String ROWID = "ROWID";
 
     /**
      * This column is not nullable.
@@ -327,7 +327,7 @@ public final class Column implements HasSQL, Typed, ColumnTemplate {
     /**
      * Returns whether this column is a row identity column.
      *
-     * @return true for _ROWID_ column, false otherwise
+     * @return true for ROWID column, false otherwise
      */
     public boolean isRowId() {
         return rowId;
@@ -336,7 +336,7 @@ public final class Column implements HasSQL, Typed, ColumnTemplate {
     /**
      * Set row identity flag.
      *
-     * @param rowId true _ROWID_ column, false otherwise
+     * @param rowId true ROWID column, false otherwise
      */
     public void setRowId(boolean rowId) {
         this.rowId = rowId;

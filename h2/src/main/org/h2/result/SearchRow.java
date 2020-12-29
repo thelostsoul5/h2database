@@ -18,7 +18,7 @@ import org.h2.value.ValueNull;
 public abstract class SearchRow extends Value {
 
     /**
-     * Index of a virtual "_ROWID_" column within a row or a table
+     * Index of a virtual "ROWID" column within a row or a table
      */
     public static final int ROWID_INDEX = -1;
 

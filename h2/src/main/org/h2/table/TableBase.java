@@ -34,7 +34,7 @@ public abstract class TableBase extends Table {
 
     /**
      * Returns main index column if index is an primary key index and has only
-     * one column with _ROWID_ compatible data type.
+     * one column with ROWID compatible data type.
      *
      * @param indexType type of an index
      * @param cols columns of the index

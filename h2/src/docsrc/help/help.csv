@@ -3905,10 +3905,10 @@ AT TIME ZONE 'Europe/London'
 "
 
 "Other Grammar","Column","
-[[schemaName.]tableAlias.] { columnName | @h2@ { _ROWID_ } }
+[[schemaName.]tableAlias.] { columnName | @h2@ { ROWID } }
 ","
 A column name with optional table alias and schema.
-_ROWID_ can be used to access unique row identifier.
+ROWID can be used to access unique row identifier.
 ","
 ID
 "

@@ -224,7 +224,7 @@ public class TestMetaData extends TestDb {
         assertEquals("B", rs.getString("COLUMN_NAME"));
         assertEquals("YES", rs.getString("IS_NULLABLE"));
         assertTrue(rs.next());
-        assertEquals("_ROWID_", rs.getString("COLUMN_NAME"));
+        assertEquals("ROWID", rs.getString("COLUMN_NAME"));
         assertEquals("NO", rs.getString("IS_NULLABLE"));
         assertFalse(rs.next());
         stat.execute("DROP TABLE TEST");
